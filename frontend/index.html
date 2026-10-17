@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101820" />
+  <title>ChainAid — Community Support on Ethereum</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.5/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <nav class="nav">
+      <a class="brand" href="#"><span class="brand-mark">✳</span> ChainAid</a>
+      <div class="nav-right">
+        <span id="networkPill" class="pill muted">Not connected</span>
+        <button id="connectBtn" class="btn btn-light">Connect MetaMask</button>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">COMMUNITY-POWERED • ON-CHAIN</p>
+          <h1>Small acts.<br/><em>Real impact.</em></h1>
+          <p class="hero-text">A transparent way to request community aid and contribute directly. Requests and donation records are stored on Ethereum-compatible networks.</p>
+          <a class="text-link" href="#requests">Explore requests <span>↘</span></a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orb orb-one"></div><div class="orb orb-two"></div>
+          <div class="art-card"><span class="art-icon">✳</span><div class="art-line long"></div><div class="art-line"></div><div class="art-line short"></div><div class="art-stamp">ON-CHAIN<br/>COMMUNITY</div></div>
+          <div class="floating-tag">Transparent by design</div>
+        </div>
+      </section>
+
+      <section class="stats">
+        <div class="stat"><span class="stat-label">TOTAL REQUESTS</span><strong id="requestCount">—</strong><small>Recorded on this network</small></div>
+        <div class="stat"><span class="stat-label">ACTIVE REQUESTS</span><strong id="activeCount">—</strong><small>Still accepting donations</small></div>
+        <div class="stat"><span class="stat-label">CONNECTED WALLET</span><strong id="walletShort">Not connected</strong><small id="walletBalance">Connect to view balance</small></div>
+      </section>
+
+      <section class="section-heading" id="requests">
+        <div><p class="eyebrow">MAKE A DIFFERENCE</p><h2>Community requests</h2></div>
+        <button id="refreshBtn" class="btn btn-outline">↻ Refresh</button>
+      </section>
+
+      <div id="notice" class="notice" role="status">Connect MetaMask, then configure the contract address after deploying ChainAid.sol.</div>
+      <div id="requestsGrid" class="request-grid">
+        <div class="empty-state"><span class="empty-icon">✳</span><h3>Your community board</h3><p>Deploy the contract and connect your wallet to load on-chain requests.</p></div>
+      </div>
+
+      <section class="create-section">
+        <div class="create-intro"><p class="eyebrow">NEED SUPPORT?</p><h2>Create a request.</h2><p>Describe a genuine need and set a funding goal in ETH. Requests are public and cannot be edited once created.</p>
+          <div class="note"><strong>Good to know</strong><p>Use a test network or Ganache while learning. Never use real funds for coursework testing.</p></div>
+        </div>
+        <form id="createForm" class="form-card">
+          <label for="title">Request title <span>Required</span></label>
+          <input id="title" maxlength="80" required placeholder="e.g. School supplies for local students"/>
+          <label for="description">What is the need?</label>
+          <textarea id="description" rows="4" maxlength="500" required placeholder="Explain the purpose of this request (max 500 characters)"></textarea>
+          <label for="goal">Funding goal <span>ETH</span></label>
+          <input id="goal" type="number" min="0.000000000000000001" step="any" required placeholder="0.05"/>
+          <button class="btn btn-dark full" type="submit">Publish request <span>↗</span></button>
+          <p class="form-foot">Requires a wallet transaction and network gas.</p>
+        </form>
+      </section>
+
+      <footer><a class="brand" href="#"><span class="brand-mark">✳</span> ChainAid</a><p>Educational blockchain assignment · Solidity + Ethereum · Built for transparent community aid</p></footer>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
